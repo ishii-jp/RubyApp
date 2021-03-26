@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_050409) do
     t.timestamp "last_login_timestamp", comment: "最後にログインを行った日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
