@@ -1,0 +1,36 @@
+<div class="content">
+    <p>新規ユーザー作成画面</p>
+    <% if flash[:msg] %>
+        <div class="flash-msg" style="color: red">
+            <%= flash[:msg] %>
+        </div>
+    <% else %>
+        ユーザー作成をしてください
+    <% end %>
+    <div class="user-form">
+        <%= form_with url: user_create_path do |form| %>
+            <table>
+                <ul>
+                    <li>
+                        <%= form.label 'name', '名前' %>
+                        <%= form.text_field :name %>
+                    </li>
+                    <li>
+                        <%= form.label 'email', 'メールアドレス' %>
+                        <%= form.text_field :email %>
+                    </li>
+                    <li>
+                        <%= form.label 'password', 'パスワード' %>
+                        <%= form.password_field :password %>
+                    </li>
+                    <li>
+                        <%= form.label 'password_confirmation', 'パスワード(確認)' %>
+                        <%= form.password_field :password_confirmation %>
+                    </li>
+                </ul>
+            </table>
+            <%= form.submit "作成" %>
+        <% end %>
+        <%= link_to "トップへ戻る", index_path %>
+    </div>
+</div>
