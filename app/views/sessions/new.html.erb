@@ -1,2 +1,25 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class="content">
+    <% if flash[:msg] %>
+        <div class="flash-msg" style="color: red">
+            <%= flash[:msg] %>
+        </div>
+    <% else %>
+        ログインを行ってください
+    <% end %>
+    <div class="login-form">
+        <%= form_tag(post_login_path, method: :post) do |form| %>
+            <table>
+                <ul>
+                    <li>
+                        <label>メールアドレス<input type="text" name="email"></label>
+                    </li>
+                    <li>
+                        <label>パスワード<input type="password" name="password"></label>
+                    </li>
+                </ul>
+            </table>
+            <input type="submit" value="ログイン">
+        <% end %>
+        <%= link_to "トップへ戻る", index_path %>
+    </div>
+</div>

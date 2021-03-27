@@ -17,14 +17,13 @@ class UsersController < ApplicationController
     def create
         logger.debug('log create_method_start')
         # TODO バリデート、トランザクション処理、例外処理を行う
-        @user = User.new(
-            name: params[:name],
-            email: params[:email],
-            password_digest: params[:password],
-            admin_flg: USER,
-            status_flg: INFORCE,
-            last_login_timestamp: params[:last_login_timestamp]
-        )
+        @user = User.new
+        @user.name = params[:name]
+        @user.email = params[:email]
+        @user.password = params[:password]
+        @user.admin_flg = USER
+        @user.status_flg = INFORCE
+
         if @user.save
             flash[:msg] = "ユーザー登録が完了しました"
         else
