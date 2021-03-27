@@ -1,6 +1,6 @@
 <div class="header">
     <% if is_login? %>
-    ログイン済み
+        ようこそ <%= current_user.name %> さん
     <% else %>
         <%= link_to "Login", get_login_path %>/<%= link_to "SignUp", signup_path %>
     <% end %>

@@ -11,10 +11,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       logger.debug('Log login_success')
       # ログイン処理
-      # TODO 外にこの処理を出したい
-      # login_service = LoginService.new
-      # login_service.login(user)
-      session[:user_id] = user.id
+      log_in(user)
+      user.regist_last_login_timestamp(user)
 
       redirect_to index_path
     else
