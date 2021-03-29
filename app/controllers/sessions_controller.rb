@@ -1,5 +1,9 @@
 # ログイン及びログアウトを行うクラス
 class SessionsController < ApplicationController
+  before_action->{
+    action_before_is_login(true)
+  }
+
   # ログイン画面
   def new
   end

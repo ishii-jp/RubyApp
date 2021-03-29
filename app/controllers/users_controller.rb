@@ -1,5 +1,9 @@
 # ユーザー管理クラス
 class UsersController < ApplicationController
+    before_action->{
+        action_before_is_login(true)
+      }
+      
     INFORCE = 0 # 有効
     INVALID = 1 # 無効
     USER = 0 # ユーザー
