@@ -1,8 +1,8 @@
 <div class="content">
     <% if flash[:msg] %>
-        <div class="flash-msg" style="color: red">
-            <%= flash[:msg] %>
-        </div>
+       <!-- flash_msg -->
+        <%= render 'elements/flash_msg', {flash_msg: flash[:msg]} %>
+        <!-- flash_msg -->
     <% else %>
         ログインを行ってください
     <% end %>

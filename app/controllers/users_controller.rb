@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     # /signup画面
     # 新規ユーザー作成画面表示
     def index
-        # @user=User.new
+        @user=User.new
         render "signup"
     end
 
@@ -21,18 +21,19 @@ class UsersController < ApplicationController
     def create
         logger.debug('log create_method_start')
         # TODO バリデート、トランザクション処理、例外処理を行う
-        @user = User.new
-        @user.name = params[:name]
-        @user.email = params[:email]
-        @user.password = params[:password]
-        @user.admin_flg = USER
-        @user.status_flg = INFORCE
+        user = User.new
+        user.name = params[:name]
+        user.email = params[:email]
+        user.password = params[:password]
+        user.admin_flg = USER
+        user.status_flg = INFORCE
 
-        if @user.save
+        if user.save
             flash[:msg] = "ユーザー登録が完了しました"
+            redirect_to action: "index"
         else
-            flash[:msg] = "ユーザー登録に失敗しました。\n最初からやり直してください"
+            @user = user
+            render "signup"
         end
-        redirect_to action: "index"
     end
 end
