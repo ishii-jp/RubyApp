@@ -2,7 +2,7 @@
 class SessionsController < ApplicationController
   before_action->{
     action_before_is_login(true)
-  }
+  }, only: [:new, :create]
 
   # ログイン画面
   def new
@@ -26,7 +26,12 @@ class SessionsController < ApplicationController
     end
   end
 
-  # ログアウト
+  # ログアウト機能
+  # /logut
   def destory
+    logger.debug("destory_method_start")
+    logout
+    @user = nil
+    render "index/top"
   end
 end

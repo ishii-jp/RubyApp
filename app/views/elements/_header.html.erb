@@ -1,6 +1,9 @@
 <div class="header">
     <% if is_login? %>
         ようこそ <%= current_user.name %> さん
+        <%= form_tag(logout_path, method: :delete) do %>
+            <input type="submit" value="ログアウト">
+        <% end %>
     <% else %>
         <%= link_to "Login", get_login_path %>/<%= link_to "SignUp", signup_path %>
     <% end %>
