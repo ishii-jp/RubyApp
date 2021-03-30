@@ -111,4 +111,11 @@ class UserTest < ActiveSupport::TestCase
     assert @user.invalid?
     assert_includes @user.errors[:password], "is invalid"
   end
+
+  test "入力値が全て正常な場合バリデートが成功すること" do
+    @user.name = "ユーザー1"
+    @user.email = "hoge@example.co.jp"
+    @user.password = "password"
+    assert_not @user.invalid?
+  end
 end
