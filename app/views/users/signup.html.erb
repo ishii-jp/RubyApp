@@ -1,14 +1,17 @@
 <div class="content">
     <p>新規ユーザー作成画面</p>
     <% if flash[:msg] %>
-        <div class="flash-msg" style="color: red">
-            <%= flash[:msg] %>
-        </div>
+        <!-- flash_msg -->
+        <%= render 'elements/flash_msg', {flash_msg: flash[:msg]} %>
+        <!-- flash_msg -->
     <% else %>
         ユーザー作成をしてください
     <% end %>
+    <!-- validate_error_message -->
+    <%= render 'elements/validate_error_message', model:@user %>
+    <!-- validate_error_message -->
     <div class="user-form">
-        <%= form_with url: user_create_path do |form| %>
+        <%= form_with local: true, url: user_create_path do |form| %>
             <table>
                 <ul>
                     <li>

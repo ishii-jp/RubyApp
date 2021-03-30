@@ -17,6 +17,12 @@ module SessionsHelper
         !current_user.nil?
     end
 
+    # ログアウトします
+    # user_idのセッションを削除します
+    def logout
+        session.delete(:user_id)
+    end
+
     # アクションの実行前にログインしているか確認します。
     # 呼び出す際に引数がない場合、未ログインの場合は、ログイン画面へリダイレクトします
     # 引数が設定されると、ログインの場合トップ画面へリダイレクトします。

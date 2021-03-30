@@ -1,16 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# usersテーブルのemailをuniqueキーはったため、テスト実行時にエラーが起きてしまっていました。
-# したがって、一旦下記デフォルトのテストデータをコメントアウトします。
-# 2021/03/29
-
-# one:
-#   name: MyString
-#   email: MyString
-#   password_digest: MyString
-#   admin_flg: 1
-#   status_flg: 1
-#   last_login_timestamp: 2021-03-26 05:04:09
+one:
+  name: test user
+  email: kuma@syake.ne.jp
+  password_digest: password
+  admin_flg: 1
+  status_flg: 1
+  last_login_timestamp: 2021-03-26 05:04:09
 
 # two:
 #   name: MyString
