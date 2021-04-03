@@ -6,8 +6,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "regist_last_login_timestamp_実行後値が登録されていること" do
-    @user.regist_last_login_timestamp(@user)
-    assert @user.last_login_timestamp
+    user = User.find_by(email: 'kuma@syake.ne.jp')
+    user.regist_last_login_timestamp(user)
+    assert user.last_login_timestamp
   end
 
   test "nameが空文字の場合バリデーションに失敗すること" do
