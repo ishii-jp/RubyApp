@@ -5,12 +5,13 @@ class SessionsController < ApplicationController
   }, only: [:new, :create]
 
   # ログイン画面
+  # /login
   def new
   end
 
   # ログイン送信
+  # /login
   def create
-    # TODO バリデートを行う
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       logger.debug('Log login_success')
@@ -29,9 +30,9 @@ class SessionsController < ApplicationController
   # ログアウト機能
   # /logut
   def destory
-    logger.debug("destory_method_start")
+    logger.debug("Log destory method start")
     logout
     @user = nil
-    render "index/top"
+    redirect_to index_path
   end
 end

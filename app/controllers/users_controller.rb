@@ -19,8 +19,7 @@ class UsersController < ApplicationController
     # /user_create画面
     #　新規ユーザー作成機能
     def create
-        logger.debug('log create_method_start')
-        # TODO バリデート、トランザクション処理、例外処理を行う
+        logger.debug('Log create method start')
         user = User.new
         user.name = params[:name]
         user.email = params[:email]

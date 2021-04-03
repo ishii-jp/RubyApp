@@ -14,6 +14,6 @@ class User < ApplicationRecord
     def regist_last_login_timestamp(user)
         logger.debug("Log last_login_timestamp_#{Time.now}")
         user.last_login_timestamp = Time.now
-        user.save
+        user.save(validate: false)
     end
 end
