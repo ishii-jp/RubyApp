@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_083443) do
+ActiveRecord::Schema.define(version: 2021_04_03_090251) do
 
   create_table "request_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "カテゴリー名"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_083443) do
   create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false, comment: "ユーザーID"
     t.integer "category_id", null: false, comment: "カテゴリーID"
+    t.integer "approver_id", null: false, comment: "承認者ID"
     t.string "title", comment: "件名"
     t.integer "price", null: false, comment: "値段"
     t.string "body", null: false, comment: "申請理由"
