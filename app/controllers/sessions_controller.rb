@@ -29,9 +29,9 @@ class SessionsController < ApplicationController
   # ログアウト機能
   # /logut
   def destory
-    logger.debug("destory_method_start")
+    logger.debug("destory start")
     logout
     @user = nil
-    render "index/top"
+    redirect_to index_path
   end
 end
