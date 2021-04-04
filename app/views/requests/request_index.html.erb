@@ -1,5 +1,10 @@
 <div class="contents">
     <p>申請画面</p>
+    <!-- confirm_valid_error_msg -->
+    <% if defined? @valid_error_msgs %>
+        <%= render 'elements/confirm_valid_error_msg', msgs:@valid_error_msgs %>
+    <% end %>
+    <!-- confirm_valid_error_msg -->
     <%= form_with local: true, url: request_confirm_path do |form| %>
         <table>
             <ul>

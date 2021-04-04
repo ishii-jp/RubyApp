@@ -1,0 +1,11 @@
+<% if msgs.instance_of?(Array) %>
+    <div class="alert">
+        <ul>
+        <% msgs.each do |msg| %>
+            <li style="color: red">
+                <%= msg %>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
