@@ -1,0 +1,27 @@
+<div class="contents">
+    <p>申請画面</p>
+    <%= form_with local: true, url: request_confirm_path do |form| %>
+        <table>
+            <ul>
+                <li>
+                    <%= form.label 'categories_name', '申請カテゴリー' %>
+                    <%= collection_select(:categories, :name, @categories, :id, :name, {:include_blank => true}) %>
+                </li>
+                <li>
+                    <%= form.label 'price', '金額' %>
+                    <%= form.text_field :price %>
+                </li>
+                <li>
+                    <%= form.label 'body', '申請理由' %>
+                    <%= form.text_field :body %>
+                </li>
+                <li>
+                    <%= form.label 'approver_user_name', '承認者' %>
+                    <%= collection_select(:approver_user, :name, @approver_useres, :id, :name, {:include_blank => true}) %>
+                </li>
+            </ul>
+        </table>
+        <%= form.submit "確認" %>
+    <% end %>
+    <p><%= link_to "トップへ戻る", index_path %></p>
+</div>

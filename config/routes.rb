@@ -12,5 +12,15 @@ Rails.application.routes.draw do
   # 新規ユーザー作成
   get 'signup', to: 'users#index', as: 'signup'
   post 'user_create', to: 'users#create', as: 'user_create'
+
+  # 申請画面
+  get 'request', to: 'requests#request_index', as: 'request'
+  post 'request/confirm', to: 'requests#request_confirm', as: 'request_confirm'
+  post 'request/complete', to: 'requests#request_complete', as: 'request_complete'
+  
+  # 管理者用ルーティング
+  # /admin
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

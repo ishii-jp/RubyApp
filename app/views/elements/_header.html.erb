@@ -1,6 +1,6 @@
 <div class="header">
     <% if is_login? %>
-        ようこそ <%= current_user.name %> さん
+        現在ログインしているのは <%= current_user.name %> さんです
         <%= form_tag(logout_path, method: :delete) do %>
             <input type="submit" value="ログアウト">
         <% end %>
