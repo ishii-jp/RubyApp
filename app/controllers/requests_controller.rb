@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
     def request_complete
         logger.debug('Log request_complete method start')
         # TODO バリデートを行う
+        # ここメソッド化したい
         request = Request.new
         request.user_id = current_user.id
         request.category_id = params[:categories_name]
