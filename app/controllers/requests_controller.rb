@@ -1,6 +1,5 @@
 # 申請機能のコントローラー
 class RequestsController < ApplicationController
-    include RequestsHelper
     # 申請画面
     # /request
     def request_index
