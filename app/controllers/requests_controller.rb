@@ -5,38 +5,29 @@ class RequestsController < ApplicationController
     def request_index
         logger.debug('Log request_inedex method start')
         @categories = RequestCategory.all
+        @request = Request.new
         user = User.new
         @approver_useres = user.get_admin_users
     end
 
-    # 申請確認画面
-    # /request/confirm
-    def request_confirm
+    # 申請確認画面　兼 申請完了画面
+    # /request/regist
+    def request_regist
         logger.debug('Log request_confirm method start')
-        # TODO バリデートを行う
-        @category = params[:categories]['name']
-        @approver_user = params[:approver_user]['name']
-        @price = params[:price]
-        @body = params[:body]
-    end
+        @request = Request.new(
+            params.require(:requests)
+            .permit(:category_id, :price, :body, :approver_id, :confirming)
+            .merge(user_id: current_user.id)
+        )
+        
+        if @request.save
+            redirect_to request_path, notice: '申請が完了しました'
+        else
+            @categories = RequestCategory.all
+            user = User.new
+            @approver_useres = user.get_admin_users
 
-    # 申請完了画面
-    # /request/complete
-    def request_complete
-        logger.debug('Log request_complete method start')
-        # TODO バリデートを行う
-        # ここメソッド化したい
-        request = Request.new
-        request.user_id = current_user.id
-        request.category_id = params[:categories_name]
-        request.approver_id = params[:approver_user]
-        request.price = params[:price]
-        request.body = params[:body]
-        result = request.save
-
-        if not result
-            # フラッシュメッセージを設定したあと、request画面を返す
-            render "request_index"
+            render :request_index
         end
     end
 end

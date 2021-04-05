@@ -15,8 +15,7 @@ Rails.application.routes.draw do
 
   # 申請画面
   get 'request', to: 'requests#request_index', as: 'request'
-  post 'request/confirm', to: 'requests#request_confirm', as: 'request_confirm'
-  post 'request/complete', to: 'requests#request_complete', as: 'request_complete'
+  post 'request/regist', to: 'requests#request_regist', as: 'request_regist'
   
   # 管理者用ルーティング
   # /admin
