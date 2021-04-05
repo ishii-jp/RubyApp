@@ -32,7 +32,7 @@
             <%= form.submit "確認" %>
         <% end %>
         <p><%= link_to "トップへ戻る", index_path %></p>
-        <% else %>
+    <% else %>
         <p>申請確認画面</p>
         <%= form_with local: true, url: request_regist_path do |form| %>
             <table>
