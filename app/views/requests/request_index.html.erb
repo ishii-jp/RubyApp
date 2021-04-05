@@ -4,6 +4,9 @@
         <!-- validate_error_messsage -->
         <%= render 'elements/validate_error_message', model:@request %>
         <!-- validate_error_messsage -->
+        <!-- flash_notice_message -->
+        <%= render partial: 'elements/flash_notice_message' %>
+        <!-- flash_notice_message -->
 
         <%= form_with local: true, url: request_regist_path do |form| %>
             <table>

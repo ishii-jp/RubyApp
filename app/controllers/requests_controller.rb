@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
         @approver_useres = user.get_admin_users
     end
 
-    # 申請確認画面
+    # 申請確認画面　兼 申請完了画面
     # /request/regist
     def request_regist
         logger.debug('Log request_confirm method start')
@@ -21,7 +21,7 @@ class RequestsController < ApplicationController
         )
         
         if @request.save
-            redirect_to request_path
+            redirect_to request_path, notice: '申請が完了しました'
         else
             @categories = RequestCategory.all
             user = User.new
