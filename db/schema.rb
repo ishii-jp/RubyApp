@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_090251) do
+ActiveRecord::Schema.define(version: 2021_04_08_042606) do
 
   create_table "request_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "カテゴリー名"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2021_04_03_090251) do
     t.string "name", null: false, comment: "名前"
     t.string "email", null: false, comment: "メールアドレス"
     t.string "password_digest", null: false, comment: "パスワード"
-    t.integer "admin_flg", null: false, comment: "管理者フラグ 0:一般 1:管理者"
-    t.integer "status_flg", null: false, comment: "有効フラグ 0:有効 1:無効"
+    t.boolean "admin", default: false, null: false
+    t.boolean "status_flg", default: false, null: false, comment: "有効フラグ 0:有効 1:無効"
     t.timestamp "last_login_timestamp", comment: "最後にログインを行った日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
