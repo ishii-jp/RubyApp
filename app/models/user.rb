@@ -11,7 +11,8 @@ class User < ApplicationRecord
     end
     validates :name, length: {maximum: 30}
     validates :email, uniqueness: true
-    validates :password, format: {with: /\A[a-zA-Z]+\z/} # 半角英文字のみ許可
+    validates :password, confirmation: true, format: {with: /\A[a-zA-Z]+\z/} # 半角英文字のみ許可
+    validates :password_confirmation, presence: true
 
     # 最終ログイン日時を登録します
     # @param User Userインスタンス

@@ -19,6 +19,7 @@ class UsersController < ApplicationController
         user.name = params[:name]
         user.email = params[:email]
         user.password = params[:password]
+        user.password_confirmation = params[:password_confirmation]
 
         if user.save
             flash[:msg] = "ユーザー登録が完了しました"
