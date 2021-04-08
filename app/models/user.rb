@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     # 管理者
-    ADMIN = 1
+    ADMIN = true
 
     has_secure_password
 
@@ -11,20 +11,22 @@ class User < ApplicationRecord
     end
     validates :name, length: {maximum: 30}
     validates :email, uniqueness: true
-    validates :password, format: {with: /\A[a-zA-Z]+\z/} # 半角英文字のみ許可
+    validates :password, confirmation: true, format: {with: /\A[a-zA-Z]+\z/} # 半角英文字のみ許可
+    validates :password_confirmation, presence: true
 
     # 最終ログイン日時を登録します
     # @param User Userインスタンス
     # @return boolean true:DB登録成功 false:DB登録失敗
     def regist_last_login_timestamp(user)
-        logger.debug("Log last_login_timestamp_#{Time.now}")
-        user.last_login_timestamp = Time.now
+        now = Time.now
+        logger.debug("Log last_login_timestamp_#{now}")
+        user.last_login_timestamp = now
         user.save(validate: false)
     end
 
     # 管理者ユーザーを取得します
     # @return array 管理者ユーザーの配列を返します
     def get_admin_users
-        User.where(admin_flg: ADMIN)
+        User.where(admin: ADMIN)
     end
 end

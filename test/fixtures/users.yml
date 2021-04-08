@@ -4,7 +4,7 @@ one:
   name: test user
   email: kuma@syake.ne.jp
   password_digest: password
-  admin_flg: 1
+  admin: 1
   status_flg: 1
   last_login_timestamp: 2021-03-26 05:04:09
 
@@ -13,5 +13,5 @@ one:
 #   email: MyString
 #   password_digest: MyString
 #   admin_flg: 1
-#   status_flg: 1
+#   status_flg: 0
 #   last_login_timestamp: 2021-03-26 05:04:09

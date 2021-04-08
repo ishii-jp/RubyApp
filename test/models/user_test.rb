@@ -113,10 +113,18 @@ class UserTest < ActiveSupport::TestCase
     assert_includes @user.errors[:password], "is invalid"
   end
 
+  test "passwordがconfirmationと相違がある場合バリデーションに失敗すること" do
+    @user.password = "password"
+    @user.password_confirmation = "passwor"
+    assert @user.invalid?
+    assert_includes @user.errors[:password_confirmation], "doesn't match Password", "doesn't match Password"
+  end
+
   test "入力値が全て正常な場合バリデートが成功すること" do
     @user.name = "ユーザー1"
     @user.email = "hoge@example.co.jp"
     @user.password = "password"
+    @user.password_confirmation = "password"
     assert_not @user.invalid?
   end
 end

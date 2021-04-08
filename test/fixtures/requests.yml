@@ -3,13 +3,15 @@
 one:
   user_id: 1
   category_id: 1
+  approver_id: 1
   title: MyString
-  price: 1
+  price: 10000
   body: MyString
 
 two:
-  user_id: 1
-  category_id: 1
+  user_id: 2
+  category_id: 2
+  approver_id: 2
   title: MyString
-  price: 1
+  price: 100
   body: MyString
