@@ -5,6 +5,5 @@ class Admin::IndexController < ApplicationController
     # /admin/index
     def admin_index
         logger.debug('admin index method start')
-        logger.debug is_admin?
     end
 end
