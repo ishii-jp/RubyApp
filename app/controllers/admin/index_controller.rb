@@ -4,6 +4,6 @@ class Admin::IndexController < ApplicationController
     # 管理画面
     # /admin/index
     def admin_index
-        logger.debug('admin index method start')
+        logger.debug('Log admin index method start')
     end
 end
