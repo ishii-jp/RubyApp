@@ -8,10 +8,10 @@ one:
   status_flg: 1
   last_login_timestamp: 2021-03-26 05:04:09
 
-# two:
-#   name: MyString
-#   email: MyString
-#   password_digest: MyString
-#   admin_flg: 1
-#   status_flg: 0
-#   last_login_timestamp: 2021-03-26 05:04:09
+two:
+  name: test user 2
+  email: test@example.co.jp
+  password_digest: password
+  admin: 0
+  status_flg: 0
+  last_login_timestamp: 2021-03-26 05:04:09
