@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   # 管理者用ルーティング
   namespace :admin do
     # 管理画面
-    get 'index' , to: 'index#admin_index', as: 'admin_index'
+    get 'index' , to: 'index#admin_index', as: 'index'
+    get 'user/show', to: 'users#admin_user_show', as: 'user_show'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

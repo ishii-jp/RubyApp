@@ -2,8 +2,13 @@ class User < ApplicationRecord
     # 管理者
     ADMIN = true
 
+    # リレーション requestsテーブル
+    has_many :requests
+
+    # passwordカラムハッシュ化の設定
     has_secure_password
 
+    # バリデーション
     with_options presence: true do
         validates :name
         validates :email

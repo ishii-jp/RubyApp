@@ -5,5 +5,10 @@ class Admin::UsersController < ApplicationController
     # /admin/user/show
     def admin_user_show
         logger.debug('Log admin_user_show method start')
+
+        # 全ユーザー情報を取得する
+        @all_users = User.all
+
+        # TODO ページネーションをつける
     end
 end
