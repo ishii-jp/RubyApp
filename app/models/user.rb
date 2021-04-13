@@ -2,8 +2,13 @@ class User < ApplicationRecord
     # 管理者
     ADMIN = true
 
+    # リレーション requestsテーブル
+    has_many :requests
+
+    # passwordカラムハッシュ化の設定
     has_secure_password
 
+    # バリデーション
     with_options presence: true do
         validates :name
         validates :email
@@ -28,5 +33,17 @@ class User < ApplicationRecord
     # @return array 管理者ユーザーの配列を返します
     def get_admin_users
         User.where(admin: ADMIN)
+    end
+
+    #　ユーザー情報を更新します
+    def self.user_update(user, params)
+        user.update(
+            name: params[:name],
+            email: params[:email],
+            password: params[:password],
+            password_confirmation: params[:password_confirmation],
+            admin: params[:admin],
+            status_flg: params[:status_flg],
+        )
     end
 end

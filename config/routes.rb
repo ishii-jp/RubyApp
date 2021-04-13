@@ -18,8 +18,13 @@ Rails.application.routes.draw do
   post 'request/regist', to: 'requests#request_regist', as: 'request_regist'
   
   # 管理者用ルーティング
-  # /admin
-
+  namespace :admin do
+    # 管理画面
+    get 'index' , to: 'index#admin_index', as: 'index'
+    get 'user/show', to: 'users#admin_user_show', as: 'user_show'
+    get 'user/edit/:id', to: 'users#admin_user_edit', as: 'user_edit'
+    post 'user/update', to: 'users#admin_user_update', as: 'user_update'
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

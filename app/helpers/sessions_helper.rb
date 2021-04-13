@@ -17,6 +17,14 @@ module SessionsHelper
         !current_user.nil?
     end
 
+    # ログインユーザーが管理者かどうか判定して返します
+    # ==== Return
+    # true :: 管理者
+    # false :: 管理者ではない
+    def is_admin?
+        current_user.admin?
+    end
+
     # ログアウトします
     # user_idのセッションを削除します
     def logout
@@ -36,6 +44,14 @@ module SessionsHelper
             if current_user
                  redirect_to index_path
             end
+        end
+    end
+
+    # アクション実行の前にログインしているのが管理者か確認します。
+    # 管理者でなければトップ画面へリダイレクトします。
+    def action_before_is_admin()
+        if not is_admin?
+            redirect_to index_path
         end
     end
 end

@@ -1,4 +1,7 @@
 class Request < ApplicationRecord
+    # リレーション　usersテーブル
+    belongs_to :user
+
     # バリデーション条件
     with_options presence: true do
         validates :category_id
