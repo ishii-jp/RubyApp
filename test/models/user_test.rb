@@ -139,4 +139,35 @@ class UserTest < ActiveSupport::TestCase
       assert_equal(User::ADMIN, admin_user.admin)
     end
   end
+
+  test "user_update_ユーザー情報が更新されていること" do
+    name = "update user"
+    email  = "update@update.ne.jp"
+    password = "updatepassword"
+    admin = false
+    status_flg = false
+    params = {
+      name: name,
+      email: email,
+      password: password,
+      password_confirmation: password,
+      admin: admin,
+      status_flg: status_flg
+    }
+
+    # updateするユーザーはまだ存在しない検証
+    assert_nil(User.find_by(email: email))
+
+    User.user_update(User.find_by(email: "kuma@syake.ne.jp"), params)
+
+    # 初期ユーザーはupdateされ存在しない検証
+    assert_nil(User.find_by(email: "kuma@syake.ne.jp"))
+
+    # 正しくupdateされたかの検証
+    user = User.find_by(email: email)
+    assert_equal(name, user.name)
+    assert_equal(email, user.email)
+    assert_equal(admin, user.admin)
+    assert_equal(status_flg, user.status_flg)
+  end
 end
