@@ -34,4 +34,16 @@ class User < ApplicationRecord
     def get_admin_users
         User.where(admin: ADMIN)
     end
+
+    #　ユーザー情報を更新します
+    def self.user_update(user, params)
+        user.update(
+            name: params[:name],
+            email: params[:email],
+            password: params[:password],
+            password_confirmation: params[:password_confirmation],
+            admin: params[:admin],
+            status_flg: params[:status_flg],
+        )
+    end
 end

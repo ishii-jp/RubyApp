@@ -2,25 +2,37 @@
     <p>ユーザー一覧画面</p>
     <table>
         <tr>
-        <th>ID</th>
-        <th>名前</th>
-        <th>メールアドレス</th>
-        <th>管理者</th>
-        <th>ステータス</th>
-        <th>最終ログイン日時</th>
-        <th>作成日時</th>
-        <th>更新日時</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>メールアドレス</th>
+            <th>管理者</th>
+            <th>ステータス</th>
+            <th>最終ログイン日時</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
         </tr>
         <% for user in @all_users do %>
             <tr>
                 <td><%= user.id %></td>
                 <td><%= user.name %></td>
                 <td><%= user.email %></td>
-                <td><%= user.admin %></td>
-                <td><%= user.status_flg %></td>
+                <%if user.admin %>
+                    <td>管理者</td>
+                <% else %>
+                    <td>一般</td>
+                <% end %>
+                <%if not user.status_flg %>
+                    <td>有効</td>
+                <% else %>
+                    <td>無効</td>
+                <% end %>
                 <td><%= user.last_login_timestamp %></td>
                 <td><%= user.created_at %></td>
                 <td><%= user.updated_at %></td>
+                <td><%= link_to "編集", admin_user_edit_path(id: user.id) %></td>
+                <%# TODO JSで確認ポップアップ後に削除する様にする %>
+                <%# DELETEメソッドで送信して削除する %>
+                <td>削除</td>
             <tr>
         <% end %>
     </table>

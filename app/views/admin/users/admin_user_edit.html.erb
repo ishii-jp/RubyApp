@@ -1,0 +1,35 @@
+<div class="contents">
+    <p>ユーザー編集画面</p>
+    <% if not @user.nil? %>
+    <!-- validate_error_message -->
+    <%= render 'elements/validate_error_message', model:@user %>
+    <!-- validate_error_message -->
+    <% end %>
+    <!-- flash_notice_message -->
+    <%= render partial: 'elements/flash_notice_message' %>
+    <!-- flash_notice_message -->
+    <%= form_with local: true, url: admin_user_update_path do |form| %>
+        <%= form.hidden_field :id, value: @edit_user.id %>
+        <table>
+            <tr>
+                <th><%= form.label 'name', '名前' %></th>
+                <th><%= form.label 'email', 'メールアドレス' %></th>
+                <th><%= form.label 'password', 'パスワード' %></th>
+                <th><%= form.label 'password_confirmation', 'パスワード(確認用)' %></th>
+                <th><%= form.label 'admin', '管理者' %></th>
+                <th><%= form.label 'status_flg', 'ステータス' %></th>
+            </tr>
+            <tr>
+                <td><%= form.text_field :name, value: @edit_user .name, size: 20 %></td>
+                <td><%= form.text_field :email, value: @edit_user .email, size: 20 %></td>
+                <td><%= form.password_field :password, size: 20 %></td>
+                <td><%= form.password_field :password_confirmation, size: 20 %></td>
+                <td><%= form.text_field :admin, value: @edit_user .admin, size: 20 %></td>
+                <td><%= form.text_field :status_flg, value: @edit_user .status_flg, size: 20 %></td>
+                <td><%= form.submit '更新' %></td>
+            </tr>
+        </table>
+    <% end %>
+    <p><%= link_to "管理画面へ戻る", admin_index_path %></p>
+    <p><%= link_to "ユーザー一覧へ戻る", admin_user_show_path %></p>
+</div>

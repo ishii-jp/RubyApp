@@ -127,4 +127,16 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = "password"
     assert_not @user.invalid?
   end
+
+  test "get_admin_users_adminカラムが1のユーザーが取得できること" do
+    user = User.new
+    admin_users = user.get_admin_users
+
+    # テストユーザー1のみが取得できていることの検証
+    assert_same(1, admin_users.size)
+    admin_users.each do |admin_user|
+      assert_equal('test user', admin_user.name)
+      assert_equal(User::ADMIN, admin_user.admin)
+    end
+  end
 end
