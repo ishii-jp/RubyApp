@@ -36,6 +36,9 @@ class User < ApplicationRecord
     end
 
     #　ユーザー情報を更新します
+    # @param User user 更新するユーザーインスタンス
+    # @param array params フォームからの更新する値
+    # @return boolean true:更新成功 false:更新失敗
     def self.user_update(user, params)
         user.update(
             name: params[:name],
@@ -45,5 +48,12 @@ class User < ApplicationRecord
             admin: params[:admin],
             status_flg: params[:status_flg],
         )
+    end
+
+    # userを削除します
+    # @param User user 削除するユーザーインスタンス
+    # @return boolean true:削除成功 false: 削除失敗
+    def self.user_destroy(user)
+        user.destroy
     end
 end

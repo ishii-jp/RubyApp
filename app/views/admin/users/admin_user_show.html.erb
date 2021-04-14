@@ -1,5 +1,8 @@
 <div class="contents">
     <p>ユーザー一覧画面</p>
+    <!-- flash_notice_message -->
+    <%= render partial: 'elements/flash_notice_message' %>
+    <!-- flash_notice_message -->
     <table>
         <tr>
             <th>ID</th>
@@ -30,10 +33,11 @@
                 <td><%= user.created_at %></td>
                 <td><%= user.updated_at %></td>
                 <td><%= link_to "編集", admin_user_edit_path(id: user.id) %></td>
-                <%# TODO JSで確認ポップアップ後に削除する様にする %>
-                <%# DELETEメソッドで送信して削除する %>
-                <td>削除</td>
+                <%= form_with local: true, url: admin_user_destroy_path(user.id), method: :delete do |form| %>
+                    <td><%= form.button "削除", data: { confirm: "本当に削除しますか？"} %></td>
+                <% end %>
             <tr>
         <% end %>
     </table>
+    <%= link_to "管理画面へ戻る", admin_index_path %>
 </div>

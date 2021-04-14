@@ -38,4 +38,20 @@ class Admin::UsersController < ApplicationController
             render :admin_user_edit
         end
     end
+
+    # ユーザー削除
+    # /admin/user/destroy/:id
+    def admin_user_destroy
+        logger.debug('Log admin_user_destroy method start')
+        
+        if User.user_destroy(User.find(params[:id]))
+            logger.debug("Log delete success")
+
+            redirect_to admin_user_show_path, notice: 'ユーザーを削除しました'
+        else
+            logger.debug("Log delete fail")
+
+            redirect_to admin_user_show_path, notice: 'ユーザーの削除に失敗しました。お手数ですが、再度お願いします。'
+        end
+    end
 end
