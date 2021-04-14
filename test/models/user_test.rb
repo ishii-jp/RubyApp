@@ -170,4 +170,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(admin, user.admin)
     assert_equal(status_flg, user.status_flg)
   end
+
+  test "user_destroy_ユーザーが削除されていること" do
+    result = User.user_destroy(User.find_by(email: "kuma@syake.ne.jp"))
+
+    # 削除に成功していればtrueである検証
+    assert result
+
+    # ユーザーが存在しない検証
+    assert_nil User.find_by(email: "kuma@syake.ne.jp")
+  end
 end
