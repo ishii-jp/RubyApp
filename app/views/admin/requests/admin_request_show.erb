@@ -1,0 +1,42 @@
+<div class="container">
+    <p>申請一覧画面</p>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">申請ID</th>
+            <th scope="col">申請者</th>
+            <th scope="col">申請カテゴリ</th>
+            <th scope="col">承認者</th>
+            <th scope="col">タイトル</th>
+            <th scope="col">申請理由</th>
+            <th scope="col">値段</th>
+            <th scope="col">ステータス</th>
+            <th scope="col">申請日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @requests.each_with_index do |req, index| %>
+                <tr>
+                    <th scope="row"><%= index+=1 %></th>
+                    <td><%= req.id %></td>
+                    <td><%= req.user.name %></td>
+                    <td><%= req.request_category.name %></td>
+                    <td><%= req.approver_id %></td>
+                    <td><%= req.title %></td>
+                    <td><%= req.body %></td>
+                    <td><%= req.price.to_s(:delimited) %></td>
+                    <% if req.approver_id.eql?(1) %>
+                        <td>未承認</td>
+                    <% else %>
+                        <td>承認済み</td>
+                    <% end %>
+                    <td><%= req.created_at.in_time_zone('Tokyo') %></td>
+                    <%# TODO ここをフォームにして承認ボタンを押したら承認フラグをアップデートし、
+                    この画面へフラッシュを持ってかえってくる様にする %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <p><%= link_to "管理画面へ戻る", admin_index_path %></p>
+</div>

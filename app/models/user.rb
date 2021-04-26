@@ -3,7 +3,7 @@ class User < ApplicationRecord
     ADMIN = true
 
     # リレーション requestsテーブル
-    has_many :requests
+    has_many :requests, dependent: :destroy
 
     # passwordカラムハッシュ化の設定
     has_secure_password

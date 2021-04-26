@@ -2,6 +2,9 @@ class Request < ApplicationRecord
     # リレーション　usersテーブル
     belongs_to :user
 
+    # リレーション request_categoriesテーブル
+    has_one :request_category, foreign_key: "id"
+
     # バリデーション条件
     with_options presence: true do
         validates :category_id
