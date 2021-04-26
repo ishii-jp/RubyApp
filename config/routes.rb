@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get 'user/edit/:id', to: 'users#admin_user_edit', as: 'user_edit'
     post 'user/update', to: 'users#admin_user_update', as: 'user_update'
     delete 'user/destroy/:id', to: 'users#admin_user_destroy', as: 'user_destroy'
+    get 'request/show', to: 'requests#admin_request_show', as: 'request_show'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
