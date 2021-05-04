@@ -17,7 +17,7 @@ class Admin::RequestsController < ApplicationController
 
         ActiveRecord::Base.transaction do
             # requestsテーブルをアップデートする
-            Request.update_approver_id(request_id)
+            Request.update_approval_flg(request_id)
 
             # request_historiesを作成する
             RequestApproveHistory.insert_approve_history(request_id, approver_id)

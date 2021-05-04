@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class RequestTest < ActiveSupport::TestCase
-  test "update_approver_id_正常にapprover_idが0から1へ更新されること" do
+  test "update_approval_flg_正常にapprover_idが0から1へ更新されること" do
     req = Request.find(2) # approver_idが0のテストデータを取得
     assert_same(req.approval_flg, 0)
 
-    Request.update_approver_id(req.id)
+    Request.update_approval_flg(req.id)
 
     req_after = Request.find(2)
 
