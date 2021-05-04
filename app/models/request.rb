@@ -1,4 +1,7 @@
 class Request < ApplicationRecord
+    # 承認
+    APPROVE = 1
+
     # リレーション　usersテーブル
     belongs_to :user
 
@@ -19,5 +22,11 @@ class Request < ApplicationRecord
     def check_confirming
         errors.delete(:confirming)
         self.confirming = errors.empty? ? '1': ''
+    end
+
+    # approver_flgを更新します
+    def self.update_approver_id(request_id)
+        request = Request.find(request_id)
+        request.update_attribute(:approval_flg, APPROVE)
     end
 end

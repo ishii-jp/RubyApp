@@ -6,6 +6,6 @@ class CreateRequestApproveHistories < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :request_approve_histories, [:request_id, :approver_id], unique: true
+    add_index :request_approve_histories, [:request_id, :approver_id], unique:true
   end
 end

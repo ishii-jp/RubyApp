@@ -1,5 +1,10 @@
 <div class="container">
     <p>申請一覧画面</p>
+    
+    <!-- flash_notice_message -->
+    <%= render partial: 'elements/flash_notice_message' %>
+    <!-- flash_notice_message -->
+    
     <table class="table">
         <thead>
             <tr>
@@ -26,14 +31,19 @@
                     <td><%= req.title %></td>
                     <td><%= req.body %></td>
                     <td><%= req.price.to_s(:delimited) %></td>
-                    <% if req.approver_id.eql?(1) %>
+                    <% if req.approval_flg.eql?(0) %>
                         <td>未承認</td>
                     <% else %>
                         <td>承認済み</td>
                     <% end %>
                     <td><%= req.created_at.in_time_zone('Tokyo') %></td>
-                    <%# TODO ここをフォームにして承認ボタンを押したら承認フラグをアップデートし、
-                    この画面へフラッシュを持ってかえってくる様にする %>
+                    <td>
+                        <%= form_with local: true, url: admin_request_approve_path do |form| %>
+                            <%= form.hidden_field :id, value: req.id %>
+                            <%= form.hidden_field :approver_id, value: current_user.id %>
+                            <%= form.submit '承認', :class=>"btn btn-primary" %>
+                        <% end %>
+                    </td>
                 </tr>
             <% end %>
         </tbody>
