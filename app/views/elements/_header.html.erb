@@ -1,4 +1,5 @@
-<div class="header">
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="<%=  index_path %>">Ruby_app</a>
     <% if is_login? %>
         現在ログインしているのは <%= current_user.name %> さんです
         <%= form_tag(logout_path, method: :delete) do %>
@@ -7,4 +8,4 @@
     <% else %>
         <%= link_to "Login", get_login_path %>/<%= link_to "SignUp", signup_path %>
     <% end %>
-</div>
+</nav>
