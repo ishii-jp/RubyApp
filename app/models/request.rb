@@ -25,6 +25,7 @@ class Request < ApplicationRecord
     end
 
     # approver_flgを更新します
+    # @param int request_id 申請ID
     def self.update_approver_id(request_id)
         request = Request.find(request_id)
         request.update_attribute(:approval_flg, APPROVE)
