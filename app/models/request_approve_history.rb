@@ -1,0 +1,2 @@
+class RequestApproveHistory < ApplicationRecord
+end
