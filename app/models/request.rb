@@ -6,7 +6,7 @@ class Request < ApplicationRecord
     belongs_to :user
 
     # リレーション request_categoriesテーブル
-    has_one :request_category, foreign_key: "id"
+    has_one :request_category,  primary_key: "category_id", foreign_key: "id"
 
     # バリデーション条件
     with_options presence: true do
