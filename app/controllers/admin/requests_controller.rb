@@ -5,7 +5,7 @@ class Admin::RequestsController < ApplicationController
     # /admin/request/show
     def admin_request_show
         logger.debug('Log admin_request_show method start')
-        @requests = Request.all
+        @requests = Request.all.includes(:user, :request_category)
     end
 
     # 申請承認機能
