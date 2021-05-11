@@ -8,6 +8,12 @@ class Request < ApplicationRecord
     # リレーション request_categoriesテーブル
     has_one :request_category,  primary_key: "category_id", foreign_key: "id"
 
+    # リレーション requests_approversテーブル
+    has_many :request_approvers, dependent: :delete_all
+    
+    # リレーション usersテーブル
+    has_many :users, through: :request_approvers
+
     # バリデーション条件
     with_options presence: true do
         validates :category_id

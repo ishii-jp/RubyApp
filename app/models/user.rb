@@ -2,8 +2,11 @@ class User < ApplicationRecord
     # 管理者
     ADMIN = true
 
+    # リレーション requests_approversテーブル
+    has_many :request_approvers, foreign_key: "approver_id", dependent: :delete_all
+    
     # リレーション requestsテーブル
-    has_many :requests, dependent: :destroy
+    has_many :requests, dependent: :destroy, through: :request_approvers
 
     # passwordカラムハッシュ化の設定
     has_secure_password

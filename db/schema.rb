@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_021224) do
+ActiveRecord::Schema.define(version: 2021_05_11_012322) do
 
   create_table "request_approve_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "request_id", null: false, comment: "申請ID"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2021_05_04_021224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["request_id", "approver_id"], name: "index_request_approve_histories_on_request_id_and_approver_id", unique: true
+  end
+
+  create_table "request_approvers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "request_id", null: false, comment: "申請ID"
+    t.integer "approver_id", null: false, comment: "承認者ID"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "request_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
