@@ -27,7 +27,7 @@
                     <td><%= req.id %></td>
                     <td><%= req.user.name %></td>
                     <td><%= req.request_category.name %></td>
-                    <td><%= req.approver_id %></td>
+                    <td><%= req.users[0].name %></td>
                     <td><%= req.title %></td>
                     <td><%= req.body %></td>
                     <td><%= req.price.to_s(:delimited) %></td>
