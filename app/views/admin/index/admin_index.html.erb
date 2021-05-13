@@ -1,4 +1,4 @@
-<div class="contents">
+<div class="container">
     <p>管理者用Rails管理画面</p>
     <p class="navibar">
         <table>
@@ -8,8 +8,8 @@
             </ul>
             <ul>
                 <li>申請関係</li>
-                <%= link_to "申請一覧", admin_request_show_path %>
-                <p><a href="">申請カテゴリー一覧</a></p>
+                <p><%= link_to "申請一覧", admin_request_show_path %></p>
+                <p><%= link_to "申請カテゴリー一覧", admin_request_category_show_path %></p>
             </ul>
         </table>
     </p>
