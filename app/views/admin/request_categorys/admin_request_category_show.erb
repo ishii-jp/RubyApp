@@ -1,12 +1,18 @@
 <div class="container">
-    <p>申請一覧画面</p>
+    <p>申請カテゴリー一覧画面</p>
     
     <!-- flash_notice_message -->
     <%= render partial: 'elements/flash_notice_message' %>
     <!-- flash_notice_message -->
 
    <%# TODO 新規作成画面もまだ未実装 %>
-   <button type="button" class="btn btn-success btn-lg btn-block">新規追加</button>
+   <button
+    type="button"
+    class="btn btn-success btn-lg btn-block"
+    onclick="location.href='<%= admin_request_category_create_path %>'"
+   >
+    新規追加
+   </button>
    <table class="table">
         <thead>
             <tr>
