@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   # 申請画面
   get 'request', to: 'requests#request_index', as: 'request'
   post 'request/regist', to: 'requests#request_regist', as: 'request_regist'
-  
+
+  get 'mypage', to: 'mypages#mypage', as: 'mypage'
+
   # 管理者用ルーティング
   namespace :admin do
     # 管理画面
