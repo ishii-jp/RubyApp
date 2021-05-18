@@ -1,16 +1,10 @@
-<div class="contents">
+<div class="container">
     <p>管理者用Rails管理画面</p>
-    <p class="navibar">
-        <table>
-            <ul>
-                <li>ユーザー関係</li>
-                <%= link_to "ユーザー一覧", admin_user_show_path %>
-            </ul>
-            <ul>
-                <li>申請関係</li>
-                <%= link_to "申請一覧", admin_request_show_path %>
-                <p><a href="">申請カテゴリー一覧</a></p>
-            </ul>
-        </table>
-    </p>
+    <ul class="list-group">
+        <li class="list-group-item active">ユーザー関係</li>
+        <li class="list-group-item"><%= link_to "ユーザー一覧", admin_user_show_path %></li>
+        <li class="list-group-item active">申請関係</li>
+        <li class="list-group-item"><%= link_to "申請一覧", admin_request_show_path %></li>
+        <li class="list-group-item"><%= link_to "申請カテゴリー一覧", admin_request_category_show_path %></li>
+    </ul>
 </div>

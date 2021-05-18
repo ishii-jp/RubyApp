@@ -1,0 +1,14 @@
+<div class="container">
+        <!-- flash_notice_message -->
+        <%= render partial: 'elements/flash_notice_message' %>
+        <!-- flash_notice_message -->
+    
+    <%= form_tag(admin_request_category_create_comp_path, method: :post) do %>
+        <div class="form-group">
+            <label for="name">カテゴリー名</label>
+            <input type="text" name ="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter category name">
+        </div>
+        <button type="submit" class="btn btn-primary">作成</button>
+    <% end %>
+    <p><%= link_to "申請カテゴリー一覧へ戻る", admin_request_category_show_path %></p>
+</div>

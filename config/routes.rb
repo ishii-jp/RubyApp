@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     delete 'user/destroy/:id', to: 'users#admin_user_destroy', as: 'user_destroy'
     get 'request/show', to: 'requests#admin_request_show', as: 'request_show'
     post 'request/approve', to: 'requests#admin_request_approve', as: 'request_approve'
+    get 'request_category/create', to: 'request_categorys#admin_request_category_create', as: 'request_category_create'
+    post 'request_category/create/comp', to: 'request_categorys#admin_request_category_create_comp', as: 'request_category_create_comp'
+    get 'request_category/show', to: 'request_categorys#admin_request_category_show', as: 'request_category_show'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
