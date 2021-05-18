@@ -1,11 +1,10 @@
 <div class="container">
     <p>申請カテゴリー一覧画面</p>
-    
+
     <!-- flash_notice_message -->
     <%= render partial: 'elements/flash_notice_message' %>
     <!-- flash_notice_message -->
 
-   <%# TODO 新規作成画面もまだ未実装 %>
    <button
     type="button"
     class="btn btn-success btn-lg btn-block"
@@ -13,6 +12,7 @@
    >
     新規追加
    </button>
+
    <table class="table">
         <thead>
             <tr>
@@ -36,13 +36,18 @@
                     <td><%= category.updated_at.in_time_zone('Tokyo') %></td>
                     <td>
                         <%# TODO form_withのurlとかまだ適当なのでupdateができる様にバックエンドを作成する %>
-                        <%= form_with local: true, url: admin_request_approve_path do |form| %>
+                        <!-- <%= form_with local: true, url: admin_request_approve_path do |form| %>
                             <%= form.submit '更新', :class=>"btn btn-primary", data: { disable_with: "送信中..." } %>
-                        <% end %>
+                        <% end %> -->
+                        <!--  仮のボタンタグ　-->
+                        <%= submit_tag "更新", class: "btn btn-primary" %>
+                        <!--  仮のボタンタグ　-->
                     </td>
                     <td>
                         <%# TODO 削除もまだ未実バックエンド部分を作成する %>
+                        <!--  仮のボタンタグ　-->
                         <%= submit_tag "削除", class: "btn btn-danger" %>
+                        <!--  仮のボタンタグ　-->
                     </td>
                 </tr>
             <% end %>
