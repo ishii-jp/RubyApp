@@ -1,11 +1,31 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="<%=  index_path %>">Ruby_app</a>
-    <% if is_login? %>
-        現在ログインしているのは <%= current_user.name %> さんです
-        <%= form_tag(logout_path, method: :delete) do %>
-            <input type="submit" value="ログアウト">
-        <% end %>
+<% login = is_login? %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%= index_path %>">
+    Ruby_app
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= index_path %>">トップ <span class="sr-only">(current)</span></a>
+      </li>
+      <% if login %>
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= request_path %>">申請画面</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= mypage_path %>">マイページ</a>
+      </li>
+      <% end %>
+    </ul>
+    <span class="navbar-text">
+    <% if login %>
+        ようこそ<%= current_user.name %>さん<br>
     <% else %>
-        <%= link_to "Login", get_login_path %>/<%= link_to "SignUp", signup_path %>
+        <div class="navbar-brand"><%= link_to "Login", get_login_path %>/<%= link_to "SignUp", signup_path %></div>
     <% end %>
+    </span>
+  </div>
 </nav>
