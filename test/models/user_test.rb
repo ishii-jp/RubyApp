@@ -180,4 +180,31 @@ class UserTest < ActiveSupport::TestCase
     # ユーザーが存在しない検証
     assert_nil User.find_by(email: "kuma@syake.ne.jp")
   end
+
+  test "contextにskip_passが指定された場合passwordのバリデーションは行われないこと" do
+    update_name = 'update_user'
+    update_email = 'update@example.com'
+
+    user = User.find(1)
+    user.name = update_name
+    user.email = update_email
+    result = user.save(context: :skip_pass)
+    assert result # passwordのバリデーションをスキップしsaveに成功したかの検証
+
+    # 値が更新されたかの検証
+    new_user = User.find(1)
+    assert_equal(update_name, new_user.name)
+    assert_equal(update_email, new_user.email)
+  end
+
+  test "contextにskip_passが指定しない場合passwordのバリデーションが行われること" do
+    update_name = 'update_user'
+    update_email = 'update@example.com'
+
+    user = User.find(1)
+    user.name = update_name
+    user.email = update_email
+    result = user.save()
+    assert_not result # passwordのバリデーションに失敗しsaveに失敗したかの検証
+  end
 end
