@@ -1,0 +1,22 @@
+<div class="container">
+
+    <!-- flash_notice_message -->
+    <%= render partial: 'elements/flash_notice_message' %>
+    <!-- flash_notice_message -->
+    <!-- validate_error_message -->
+    <%= render 'elements/validate_error_message', model:@user %>
+    <!-- validate_error_message -->
+    
+    <p>ユーザー情報画面</p>
+    <%= form_with model: @user, local: true, url: user_update_path, method: :put do |f| %>
+        <div class="form-group">
+            <%= f.label 'name', '名前' %>
+            <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label 'email', 'メールアドレス' %>
+            <%= f.text_field :email, class: 'form-control' %>
+        </div>
+        <%= f.submit '更新', class: 'btn btn-primary' %>
+    <% end %>
+</div>

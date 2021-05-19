@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   # 新規ユーザー作成
   get 'signup', to: 'users#index', as: 'signup'
   post 'user_create', to: 'users#create', as: 'user_create'
+  
+  # ユーザー情報画面
+  get 'user/show', to: 'users#show', as: 'user_show'
+  
+  #ユーザー情報更新
+  put 'user/update', to: 'users#update', as: 'user_update'
 
   # 申請画面
   get 'request', to: 'requests#request_index', as: 'request'

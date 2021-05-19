@@ -3,7 +3,8 @@
     <!-- TODO 各画面作成後link_toの第二引数へpathのエイリアスを指定する　-->
     <ul class="list-group">
         <li class="list-group-item active">ユーザー情報</li>
-        <li class="list-group-item"><%= link_to "ユーザー情報" %></li>
+        <li class="list-group-item"><%= link_to "ユーザー情報", user_show_path %></li>
+        <li class="list-group-item"><%= link_to "パスワード変更" %></li>
         <li class="list-group-item active">申請情報</li>
         <li class="list-group-item"><%= link_to "申請一覧" %></li>
         <li class="list-group-item"><%= link_to "申請履歴" %></li>
