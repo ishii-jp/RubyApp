@@ -36,4 +36,11 @@ class Request < ApplicationRecord
         request = Request.find(request_id)
         request.update_attribute(:approval_flg, APPROVE)
     end
+
+    # user_idに合致する申請を取得して返します
+    # @param int user_id ユーザーID
+    # @return array 合致した申請
+    def self.get_request_by_user_id(user_id)
+        Request.where(user_id: user_id).includes(:user, :users, :request_category)
+    end
 end

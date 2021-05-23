@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # 申請画面
   get 'request', to: 'requests#request_index', as: 'request'
   post 'request/regist', to: 'requests#request_regist', as: 'request_regist'
+  get 'request/show', to: 'requests#request_show', as: 'request_show'
 
   get 'mypage', to: 'mypages#mypage', as: 'mypage'
 
