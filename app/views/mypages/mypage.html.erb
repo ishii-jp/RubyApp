@@ -6,7 +6,7 @@
         <li class="list-group-item"><%= link_to "ユーザー情報", user_show_path %></li>
         <li class="list-group-item"><%= link_to "パスワード変更" %></li>
         <li class="list-group-item active">申請情報</li>
-        <li class="list-group-item"><%= link_to "申請一覧" %></li>
+        <li class="list-group-item"><%= link_to "申請一覧", request_show_path %></li>
         <li class="list-group-item"><%= link_to "申請履歴" %></li>
     </ul>
     <%= form_tag(logout_path, method: :delete) do %>

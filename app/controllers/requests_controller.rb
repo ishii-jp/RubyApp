@@ -42,4 +42,11 @@ class RequestsController < ApplicationController
             logger.debug(e)
             redirect_to request_path, notice: 'システムエラーが発生しました'
     end
+
+    # 申請一覧画面
+    # /request/show
+    def request_show
+        logger.debug('Log request_show method start')
+        @requests = Request.get_request_by_user_id(current_user.id)
+    end
 end
